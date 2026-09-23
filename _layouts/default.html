@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ page.title }} · {{ site.title }}</title>
+<meta name="robots" content="{% if site.draft %}noindex{% else %}index{% endif %}">
+<style>
+:root { --bg:#fbfbfe; --fg:#1b1b1f; --muted:#5d5e67; --line:#e2e2ea; --accent:#3d5afe; --warn-bg:#fff4e5; --warn-fg:#7a3e00; }
+@media (prefers-color-scheme: dark) { :root { --bg:#121216; --fg:#e7e7ee; --muted:#a2a3ad; --line:#2c2c35; --accent:#8c9eff; --warn-bg:#3a2a12; --warn-fg:#ffd7a0; } }
+body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+nav { display:flex; gap:16px; flex-wrap:wrap; font-size:15px; padding-bottom:12px; border-bottom:1px solid var(--line); }
+a { color:var(--accent); }
+h1 { font-size:28px; line-height:1.25; margin:24px 0 8px; }
+h2 { font-size:20px; margin:32px 0 8px; }
+table { border-collapse:collapse; width:100%; font-size:15px; display:block; overflow-x:auto; }
+th, td { border:1px solid var(--line); padding:6px 8px; text-align:left; vertical-align:top; }
+.draft { background:var(--warn-bg); color:var(--warn-fg); padding:12px 14px; border-radius:10px; margin:16px 0; font-weight:600; }
+.muted { color:var(--muted); font-size:14px; }
+input, button { font:inherit; padding:10px 12px; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:var(--fg); width:100%; box-sizing:border-box; margin:4px 0 12px; }
+button { background:#c62828; color:#fff; border:none; cursor:pointer; font-weight:600; }
+button:disabled { opacity:.6; cursor:default; }
+</style>
+</head>
+<body>
+<main>
+<nav><a href="{{ '/' | relative_url }}">NexCall</a><a href="{{ '/privacy' | relative_url }}">Privacy policy</a><a href="{{ '/terms' | relative_url }}">Terms</a><a href="{{ '/delete-account' | relative_url }}">Delete your account</a></nav>
+{% if site.draft %}<div class="draft">DRAFT — not yet in force. This text is under review and may change before NexCall is opened to the public.</div>{% endif %}
+{{ content }}
+<p class="muted">Version {{ site.policy_version }} · In force: {{ site.effective_date }}</p>
+</main>
+</body>
+</html>

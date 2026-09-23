@@ -1,0 +1,26 @@
+# NexCall legal pages, published with GitHub Pages (wave 4, ADR-047).
+#
+# ONE place for the values that change: the server's domain (DuckDNS today,
+# possibly a bought domain before release) and the grievance contact.
+
+title: NexCall
+# GitHub Pages address: https://sk091.github.io/nexcall-legal/
+url: https://sk091.github.io
+baseurl: /nexcall-legal
+# While true, every page carries a DRAFT banner and says it is not in force.
+# Set to false only when the owner has approved the text (ADR-047).
+draft: true
+
+# The NexCall server. Used by the deletion page and in the policy text.
+server_domain: nexcall-shivam.duckdns.org
+
+# Published as the grievance officer (IT Rules 2021 r.3(2); DPDP Act s.13).
+# REPLACE both before publishing.
+grievance_name: "NexCall support (operator: Shivam Kumar)"
+grievance_email: "nexcall.support@gmail.com"
+
+policy_version: "2026-09-23-draft"
+effective_date: "not yet in force"
+
+markdown: kramdown
+exclude: [README.md]
