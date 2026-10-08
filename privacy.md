@@ -33,24 +33,35 @@ data fiduciary for the data described here. Contact: <{{ site.grievance_email }}
 
 | Data | Why | How long we keep it |
 |---|---|---|
-| **Your account:** username, display name, and your password stored as a one-way hash (we never see the password itself), and when you signed up. {% comment %}P1{% endcomment %} | To create your account and let you sign in. | Until you delete your account. |
+| **Your account:** username, display name, and your password stored as a one-way hash. Our server receives your password when you create your account, the first time you sign in on a phone and when you change it; it keeps only the hash, never the password, and when you signed up. {% comment %}P1{% endcomment %} | To create your account and let you sign in. | Until you delete your account. |
+| **After you delete your account:** only your username, when you signed up and when you deleted the account. Nothing else — no messages, contacts, email, phone details or IP address. {% comment %}P28{% endcomment %} | Indian law (IT Rules 2021, Rule 3(1)(h)) requires us to keep registration details for 180 days after an account is deleted. | 180 days after deletion, then erased automatically. |
 | **Your email:** stored only as a scrambled code (a keyed hash) plus a hint like s•••••@gmail.com, never as the address itself. {% comment %}P26{% endcomment %} | To let you sign in with your email and reset a forgotten password with a code we send to it. When you type your email to get a code, we use it once to send the mail and do not keep it. | Until you delete your account. |
 | **Google sign-in (optional):** only Google's account identifier for you and a display name. Not your email or photo. {% comment %}P2{% endcomment %} | To let you sign in with Google, and to reset a forgotten password. | Until you delete your account. |
 | **Your NexCall contacts:** who you have added, who asked to add you, who you blocked. {% comment %}P4{% endcomment %} | So you can message and call your contacts, and so blocking works. | Until you or they remove the contact, or an account is deleted. |
 | **Presence:** whether you are online, and when you were last seen. {% comment %}P5{% endcomment %} | To show your contacts whether you are available. You can turn this off in Me › Privacy. | Updated as you use the app; removed when you delete your account. |
-| **Messages waiting for delivery:** encrypted, unreadable to us. {% comment %}P6 P7{% endcomment %} | To deliver messages to a phone that is offline. | Deleted when delivered, or after 14 days. |
+| **Messages waiting for delivery:** encrypted, unreadable to us. {% comment %}P6 P7{% endcomment %} | To deliver messages to a phone that is offline. | Deleted when delivered, or after 30 days. |
 | **Photos, videos and files you send:** encrypted on your phone before upload, unreadable to us. {% comment %}P6 P8{% endcomment %} | To deliver attachments. | Deleted after 30 days. |
-| **Message history backup:** encrypted on your phone, unreadable to us. {% comment %}P9{% endcomment %} | So you can restore your chats on a new phone. | Until you delete your account. |
+| **Message history backup:** encrypted on your phone before it is uploaded. The key that opens it never leaves your phone unprotected. If you sign in with a password, a copy of that key is kept on our server, locked with a key made from your password: this protects your backup from other people, but not from whoever runs the server, because the server receives your password when you set it. A backup opened only by your Google account's protected backup, a passkey or a recovery key you saved cannot be read by us. The app shows which of these you have in Me › Chat backup. {% comment %}P9{% endcomment %} | So you can restore your chats on a new phone. | Until you delete your account. |
 | **Push token:** an identifier from Google's Firebase Cloud Messaging for your phone. {% comment %}P13{% endcomment %} | To wake your phone for an incoming call or message. The notification we send carries no names and no message content. | Replaced when it changes; removed when you delete your account. |
-| **Sign-in sessions.** {% comment %}P18{% endcomment %} | To keep you signed in. | 1 hour, or up to 7 days (30 days with "Remember me"). |
-| **Call-quality reports:** when a call fails, the app sends the network type, whether a VPN was on, your mobile carrier's code, technical connection details, why the call ended, and the app version. No user id, no IP address, no one else's details; the time is rounded to the hour. {% comment %}P14{% endcomment %} | To find and fix call failures. This is **on by default**; turn it off in Me › Privacy › "Send anonymous call-quality reports". | 90 days. |
+| **Missed calls your phone has not collected:** when a call ends before it reached your phone, or while your phone had no connection, we keep who called, when, whether it was an audio or video call, and why it ended (not reached, not answered, or cancelled). Nothing is kept about a call that was answered or declined, or that your phone already knew about. {% comment %}P33{% endcomment %} | So your phone can show you the missed call when it is back online. | Deleted as soon as your phone has collected it, or after 7 days. |
+| **Sign-in sessions.** {% comment %}P18{% endcomment %} | To keep you signed in. | 1 hour, renewed while you use the app for up to 7 days, or up to a year with "Remember me". |
+| **Service-quality numbers:** once a day the app sends rough, anonymous numbers about how well calls and messages worked: bands of how long a call took to connect, its sound and picture quality, the kind of connection and network, and how long it lasted; and, counted per day, how long messages took to be sent and delivered and how often something failed. No user id, no IP address, no one else's details, nothing you said or sent; only the day, never the time. {% comment %}P29{% endcomment %} | To make calls and messages faster and more reliable. **On by default**; turn it off in Me › Privacy › "Help improve calls and messages", which also deletes anything not yet sent. | 90 days. |
+| **Live call reports (temporary, while calls are being stabilised):** during a call, every 10 seconds, the app sends technical numbers about that call: picture size, frame rate and bitrate sent and received, delay and loss, how loud your microphone is as a number (never the sound itself), whether voice focus is on, whether the sound goes to the earpiece, speaker, a wired headset or Bluetooth (the kind only, never the name of a headset), the kind of network and connection path, how warm the phone is, the battery level, how much charge the battery reports it has left, whether the phone is charging and the battery's temperature, the app version, and your phone model. Nothing you said or showed, no names, no addresses. These reports are **not anonymous**: each is stored with the call it belongs to, and the server knows which accounts were in that call. {% comment %}P32{% endcomment %} | To find out why a call had a poor picture or dropped, on either phone, and how much battery calls use. **On by default**; turn it off in Me › Privacy › "Help improve calls and messages". This will be removed when calls are stable. | 7 days, in the server log only. |
+| **Call-quality reports:** when a call fails, the app sends the network type, whether a VPN was on, your mobile carrier's code, technical connection details, why the call ended, and the app version. No user id, no IP address, no one else's details; the time is rounded to the hour. {% comment %}P14{% endcomment %} | To find and fix call failures. This is **on by default**; turn it off in Me › Privacy › "Help improve calls and messages". | 90 days. |
 | **Abuse reports** you file: who you reported, the reason, anything you wrote, and — **only if you report a specific message — the text of that one message, sent from your phone**, with who sent it and when. The app tells you this before you send. {% comment %}P15{% endcomment %} | To act on abuse and meet our legal duties. | Until the report is resolved, then 180 days. If an account involved is deleted, the report is kept without the link to that account. |
-| **Server logs:** the requested address (without search terms), the result, a shortened IP address (the last part removed), and account ids on some events such as sign-in and calls. {% comment %}P12 P17{% endcomment %} | To keep the service running and secure, and to investigate misuse. | Logs are overwritten as new ones are written, at about 100 MB per log; how many days that covers depends on traffic. |
+| **Server logs:** the requested address (without search terms), the result, a shortened IP address (the last part removed), and your account id on some single-account events such as sign-in. Log lines about a call carry only a random call number, never who was on it, and our call relay keeps no logs at all. {% comment %}P12 P17{% endcomment %} | To keep the service running and secure, and to investigate misuse. | Deleted after 7 days at most. |
+| **Devices & sessions:** for each sign-in to your account, the device name the app reports (for example "Samsung SM-S921B"), when it signed in and was last active, and a shortened IP address (the last part removed). {% comment %}P12{% endcomment %} | To show you, in Me › Security › Devices & sessions, where your account is signed in, and to let you log any device out. | While the sign-in is active, then 30 days. |
+| **Security record:** when something security-relevant happened on your account: a new sign-in, your messages moved to another phone, a passkey added or removed, a copy of your backup key handed to a signed-in phone, your password or email changed, your other sign-ins ended. Only what kind of change and when, and which of your sign-ins made it; no content. {% comment %}P34{% endcomment %} | So the app can show you what happened on your account and warn your other phones. | 180 days. |
 
-**What we cannot see.** Messages, attachments, backups and calls are end-to-end
-encrypted between the phones taking part. Calls go directly between phones, or
+**What we cannot see.** Messages, attachments and calls are end-to-end
+encrypted between the phones taking part. (Backups are described in the table
+above.) Your phone learns which keys belong to a contact from our server the
+first time; comparing the safety code with that contact confirms no one,
+including us, is in between. Calls go directly between phones, or
 through our relay server, which passes on encrypted traffic it cannot decrypt.
-We never record calls. {% comment %}P6 P9 P10{% endcomment %}
+We never record calls. Your phone finds its network path with our own server,
+not a third party's. With "Hide my IP on calls" (Me › Calls) every call goes
+through our relay, so the other person never learns your IP address. {% comment %}P6 P9 P10{% endcomment %}
 
 **What we can see (metadata).** To deliver messages and connect calls, our
 server knows which accounts message or call each other, when, and how large
@@ -59,13 +70,17 @@ messages are. {% comment %}P11{% endcomment %}
 ## 2. On your phone
 
 The app keeps your messages (in an encrypted store), your call history, a copy
-of your contact list and your settings on your phone. They are not included in
-Android backups. {% comment %}P25{% endcomment %}
+of your contact list and your settings on your phone. None of it is included in
+Android backups or copied when you move to a new phone. {% comment %}P25{% endcomment %}
 
 Your **recovery key**, which opens your message backup, is kept on your phone
 and in Google Block Store, which backs it up to your Google account. Google
-encrypts that backup end to end when your phone has a screen lock. NexCall's
-server never receives this key. {% comment %}P20{% endcomment %}
+encrypts that backup end to end when your phone has a screen lock; without a
+screen lock the app keeps the key only on your phone. NexCall's server never
+receives this key in a form it can open by itself. If your password opens your
+backup, the server stores a copy locked with your password (see the table
+above); if you add a passkey, it stores a copy locked by the passkey, which it
+cannot open. {% comment %}P20{% endcomment %}
 
 ## 3. Who else handles your data
 
