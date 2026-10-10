@@ -24,9 +24,10 @@ You must be at least 18. One person, one account: do not share it.
 
 ## Reports and enforcement
 
-You can report an account or a message from the app. Because messages are
-end-to-end encrypted, we can only see a message if someone reports it and
-their phone sends it to us (see the [privacy policy](privacy)). We may
+You can report an account or a message from the app. Messages are end-to-end
+encrypted and our server is not given the keys. The way a message's text
+reaches us is a report: the reporting person's phone sends us that one message
+(see the [privacy policy](privacy)). We may
 suspend or delete accounts that break these terms, and we cooperate with
 lawful requests from Indian authorities for the data we actually hold.
 
@@ -35,6 +36,10 @@ lawful requests from Indian authorities for the data we actually hold.
 NexCall is provided as it is, without guarantees that it will always be
 available or free of faults. We may change or stop the service; if we stop it,
 we will say so in advance where we can, so you can keep what is on your phone.
+
+To protect the server's storage, messages can be set up on a phone for one
+account at most 4 times in any 24 hours. A new phone, a restore and a reinstall
+each count as one. A fifth has to wait until the 24 hours have passed.
 
 ## Ending your account
 
