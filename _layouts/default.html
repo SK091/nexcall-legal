@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ page.title }} · {{ site.title }}</title>
-<meta name="robots" content="{% if site.draft %}noindex{% else %}index{% endif %}">
+<meta name="robots" content="{% if site.draft and page.draft != false %}noindex{% else %}index{% endif %}">
 <style>
 :root { --bg:#fbfbfe; --fg:#1b1b1f; --muted:#5d5e67; --line:#e2e2ea; --accent:#3d5afe; --warn-bg:#fff4e5; --warn-fg:#7a3e00; }
 @media (prefers-color-scheme: dark) { :root { --bg:#121216; --fg:#e7e7ee; --muted:#a2a3ad; --line:#2c2c35; --accent:#8c9eff; --warn-bg:#3a2a12; --warn-fg:#ffd7a0; } }
@@ -26,7 +26,7 @@ button:disabled { opacity:.6; cursor:default; }
 <body>
 <main>
 <nav><a href="{{ '/' | relative_url }}">NexCall</a><a href="{{ '/privacy' | relative_url }}">Privacy policy</a><a href="{{ '/terms' | relative_url }}">Terms</a><a href="{{ '/delete-account' | relative_url }}">Delete your account</a></nav>
-{% if site.draft %}<div class="draft">DRAFT — not yet in force. This text is under review and may change before NexCall is opened to the public.</div>{% endif %}
+{% if site.draft and page.draft != false %}<div class="draft">DRAFT — not yet in force. This text is under review and may change before NexCall is opened to the public.</div>{% endif %}
 {{ content }}
 <p class="muted">Version {{ site.policy_version }} · In force: {{ site.effective_date }}</p>
 </main>

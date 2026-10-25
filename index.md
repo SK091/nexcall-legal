@@ -15,5 +15,6 @@ your safety number. Backups are separate; the privacy policy says more.
   your rights.
 - [Terms of use](terms): the rules for using NexCall.
 - [Delete your account](delete-account): in the app, or on this website.
+- [Child safety standards](child-safety): what is not allowed, how to report it, and what we do.
 
 Questions or complaints: {{ site.grievance_name }}, <{{ site.grievance_email }}>.
